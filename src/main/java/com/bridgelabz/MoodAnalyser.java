@@ -21,18 +21,19 @@ public class MoodAnalyser {
 
         public String analyseMood() {
 
-            if (message.toLowerCase().contains("sad")) {
-                return "Sad";
-            } else if (message.toLowerCase().contains("happy")) {
-                return "Happy";
-            } else if (message.isEmpty() || message == null)
-                try {
+            try {
+                if (message.equalsIgnoreCase(message))
+                    return "SAD";
+                else if (message.equalsIgnoreCase(message))
+                    return "HAPPY";
+                else if (message.isEmpty() || message == null)
                     throw new MoodAnalysisException("Invalid Mood");
-                } catch (MoodAnalysisException e) {
-                    e.printStackTrace();
-                }
-            else
-                return "No Match";
-                return null;
+                else
+                    return "No Match";
+
+            } catch (MoodAnalysisException e) {
+                e.printStackTrace();
+                return "Invalid Mood";
+            }
         }
-    }
+}
